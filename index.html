@@ -158,7 +158,31 @@
 
             /////////// Normal Amd Economy Ticket Price Count
 
-            
+            function calculateTotal() {
+                const ticketCount = getInputValue('ticket');
+
+                const economyCount = getInputValue('economy');
+
+                const subtotalPrice = ticketCount * 150 + economyCount * 100;
+                document.getElementById('subtotal-price').innerText = '$' + subtotalPrice;
+                //       Vat Add
+                const vat = Math.round(subtotalPrice * 0.1);
+                document.getElementById('vat-amount').innerText = '$' + vat;
+                //       Total Price
+                const grandTotal = subtotalPrice + vat;
+                document.getElementById('grand-total').innerText = '$' + grandTotal;
+            }
+            function getInputValue(ticket) {
+                const ticketInput = document.getElementById(ticket + '-count');
+                const ticketCount = parseInt(ticketInput.value);
+                return ticketCount;
+            }
+            const loginBtn = document.getElementById('login');
+            loginBtn.addEventListener("click", function () {
+                const loginArea = document.getElementById('login-area');
+                loginArea.style.display = "none";
+                alert(' Your Payment Successful, Thank You!! ')
+            })
 
 
         </script>
